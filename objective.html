@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Vista Solutions | Thoughtful Technology, Personal Purpose</title>
+    <style>
+        :root {
+            --primary-blue: #0D6E9A;
+            --light-blue: #85C6E8;
+            --sky-blue: #BDE5F2;
+            --coral: #FF7F5C;
+            --sunshine: #FFD966;
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            color: var(--primary-blue);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .cta-button {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #085a80;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--sky-blue) 0%, var(--light-blue) 100%);
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" d="M0,160L48,170.7C96,181,192,203,288,208C384,213,480,203,576,186.7C672,171,768,149,864,154.7C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .secondary-button {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .secondary-button:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h3 {
+            font-size: 36px;
+            color: var(--primary-blue);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h3::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--coral);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h4 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: var(--text-light);
+        }
+        
+        .about-features {
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            background-color: var(--sky-blue);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-blue);
+            font-size: 20px;
+        }
+        
+        .feature-text {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        /* Danoggin Section */
+        .danoggin {
+            background-color: #f9f9f9;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wave-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            transform: rotate(180deg);
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23ffffff" d="M0,160L48,170.7C96,181,192,203,288,208C384,213,480,203,576,186.7C672,171,768,149,864,154.7C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .danoggin-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .card-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            flex: 1;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--sky-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .card h4 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+        
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .card-link {
+            color: var(--coral);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .card-link span {
+            margin-left: 5px;
+            transition: margin-left 0.3s;
+        }
+        
+        .card-link:hover span {
+            margin-left: 10px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #054e6f 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .cta h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button-light {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .cta-button-light:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #f9f9f9;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            width: 25%;
+        }
+        
+        .footer-logo h3 {
+            font-size: 24px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+        }
+        
+        .footer-links {
+            width: 20%;
+        }
+        
+        .footer-links h4 {
+            font-size: 18px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            text-decoration: none;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .footer-contact {
+            width: 30%;
+        }
+        
+        .footer-contact h4 {
+            font-size: 18px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--primary-blue);
+        }
+        
+        .contact-text {
+            color: var(--text-light);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #e0e0e0;
+            color: var(--text-light);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column-reverse;
+            }
+            
+            .card-container {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-logo, .footer-links, .footer-contact {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="95" fill="#0D6E9A" stroke="#0D6E9A" stroke-width="10"/>
+                            <path d="M30 120C60 90 80 150 120 130C160 110 180 70 180 70" stroke="#85C6E8" stroke-width="12"/>
+                            <path d="M30 150C60 120 80 180 120 160C160 140 180 100 180 100" stroke="#FF7F5C" stroke-width="12"/>
+                        </svg>
+                    </div>
+                    <h1>Blue Vista Solutions</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="active">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Danoggin</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#" class="cta-button">Download App</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Exploring Thoughtful Technology With a Personal Purpose</h2>
+                <p>Blue Vista Solutions creates human-centered apps that deliver peace of mind through innovative cognitive monitoring solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="cta-button">Discover Danoggin</a>
+                    <a href="#" class="secondary-button">Learn About Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="wave"></div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h3>Who We Are</h3>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h4>Human-Centered Solutions Built With Care</h4>
+                    <p>Blue Vista Solutions is a home for thoughtfully crafted applications that address real human needs. Founded by an experienced software engineer with over 50 years in the industry, we focus on creating purpose-driven tools that enhance everyday wellbeing.</p>
+                    <p>Our flagship product, Danoggin, helps individuals manage cognitive vulnerabilities through regular check-ins and quiet accountability, providing peace of mind for users and their loved ones.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">50+ years of software engineering expertise</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">Focus on purpose-driven technology</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div class="feature-text">Commitment to user privacy and dignity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="/api/placeholder/500/400" alt="Technology with purpose">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="danoggin">
+        <div class="wave-top"></div>
+        <div class="container">
+            <div class="section-title">
+                <h3>About Danoggin</h3>
+            </div>
+            <div class="danoggin-content">
+                <div class="about-image" style="margin-bottom: 40px;">
+                    <svg width="250" height="250" viewBox="0 0 841 841" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M699.3 841H141.7C63.5 841 0 777.5 0 699.3V141.7C0 63.5 63.5 0 141.7 0H699.3C777.5 0 841 63.5 841 141.7V699.3C841 777.5 777.5 841 699.3 841Z" fill="#0D6E9A"/>
+                        <path d="M699.3 798.5H141.7C86.9 798.5 42.5 754.1 42.5 699.3V141.7C42.5 86.9 86.9 42.5 141.7 42.5H699.3C754.1 42.5 798.5 86.9 798.5 141.7V699.3C798.5 754.1 754.1 798.5 699.3 798.5Z" fill="#BDE5F2"/>
+                        <path d="M630.2 324.8C630.2 324.8 557.7 401.3 420.5 401.3C283.3 401.3 210.8 324.8 210.8 324.8V324.8C210.8 324.8 283.3 248.3 420.5 248.3C557.7 248.3 630.2 324.8 630.2 324.8V324.8Z" fill="#85C6E8"/>
+                        <path d="M630.2 513.2C630.2 513.2 557.7 589.7 420.5 589.7C283.3 589.7 210.8 513.2 210.8 513.2V513.2C210.8 513.2 283.3 436.7 420.5 436.7C557.7 436.7 630.2 513.2 630.2 513.2V513.2Z" fill="#FF7F5C"/>
+                        <path d="M420.5 229.3C482.8 229.3 533.4 178.7 533.4 116.5C533.4 54.2 482.8 3.6 420.5 3.6C358.3 3.6 307.7 54.2 307.7 116.5C307.7 178.7 358.3 229.3 420.5 229.3Z" fill="#FFD966"/>
+                    </svg>
+                </div>
+                <p style="text-align: center; max-width: 800px; margin-bottom: 30px; font-size: 18px;">Danoggin is designed to support individuals with occasional cognitive challenges—especially those triggered by dehydration, fatigue, or stress. It delivers simple prompts throughout the day and alerts loved ones if responses are missed or concerning.</p>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#0D6E9A" stroke-width="2"/>
+                                <path d="M12 6V12L16 14" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h4>Quick Cognitive Check-Ins</h4>
+                        <p>Simple, non-intrusive questions delivered at customizable intervals to monitor cognitive wellness.</p>
+                        <a href="#" class="card-link">Learn More <span>→</span></a>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 11C20 15.4183 16.4183 19 12 19C7.58172 19 4 15.4183 4 11C4 6.58172 7.58172 3 12 3C16.4183 3 20 6.58172 20 11Z" stroke="#0D6E9A" stroke-width="2"/>
+                                <path d="M12 7V11L15 13" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round"/>
+                                <rect x="10" y="17" width="4" height="5" rx="1" stroke="#0D6E9A" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Real-Time Monitoring</h4>
+                        <p>Track check-in performance with immediate notifications when alerts are missed or incorrectly answered.</p>
+                        <a href="#" class="card-link">Learn More <span>→</span></a>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 16V17" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M8 7V5C8 3.34315 9.34315 2 11 2H13C14.6569 2 16 3.34315 16 5V7" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round"/>
+                                <rect x="4" y="7" width="16" height="14" rx="2" stroke="#0D6E9A" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h4>Privacy & Security</h4>
+                        <p>User-friendly interface designed with strict privacy controls, letting you decide who sees what information.</p>
+                        <a href="#" class="card-link">Learn More <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h3>Ready to Experience Danoggin?</h3>
+            <p>Transform the way you approach cognitive care with Danoggin's innovative monitoring system—because every mind matters.</p>
+            <a href="#" class="cta-button-light">Download Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Blue Vista Solutions</h3>
+                    <p>Exploring thoughtful technology with a personal purpose.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2H15C13.6739 2 12.4021 2.52678 11.4645 3.46447C10.5268 4.40215 10 5.67392 10 7V10H7V14H10V22H14V14H17L18 10H14V7C14 6.73478 14.1054 6.48043 14.2929 6.29289C14.4804 6.10536 14.7348 6 15 6H18V2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3.00005C22.0424 3.67552 20.9821 4.19216 19.86 4.53005C19.2577 3.83756 18.4573 3.34674 17.567 3.12397C16.6767 2.90121 15.7395 2.95724 14.8821 3.2845C14.0247 3.61176 13.2884 4.19445 12.773 4.95376C12.2575 5.71308 11.9877 6.61238 12 7.53005V8.53005C10.2426 8.57561 8.50127 8.18586 6.93101 7.39549C5.36074 6.60513 4.01032 5.43868 3 4.00005C3 4.00005 -1 13 8 17C5.94053 18.398 3.48716 19.099 1 19C10 24 21 19 21 7.50005C20.9991 7.2215 20.9723 6.94364 20.92 6.67005C21.9406 5.66354 22.6608 4.39276 23 3.00005Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="4" cy="4" r="2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Danoggin App</a></li>
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">User Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7294C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1469 21.5901 20.9046 21.7335 20.6408 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77383 17.3147 6.72534 15.2662 5.19 12.85C3.49998 10.2412 2.44824 7.27097 2.12 4.18001C2.09501 3.90347 2.12788 3.62476 2.2165 3.36163C2.30513 3.09849 2.44757 2.85669 2.63477 2.65172C2.82196 2.44675 3.0498 2.28281 3.30379 2.17062C3.55777 2.05843 3.83233 2.00028 4.11 2.00001H7.11C7.59531 1.99523 8.06579 2.16708 8.43376 2.48354C8.80173 2.79999 9.04208 3.23945 9.11 3.72001C9.23674 4.68007 9.47141 5.62273 9.81 6.53001C9.94474 6.88793 9.97366 7.27692 9.89391 7.65089C9.81415 8.02485 9.62886 8.36812 9.36 8.64001L8.09 9.91001C9.51356 12.4136 11.5865 14.4865 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9752 14.1859 16.3491 14.1061C16.7231 14.0263 17.1121 14.0553 17.47 14.19C18.3773 14.5286 19.3199 14.7633 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <p>(555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <p>contact@bluevistasoultions.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#0D6E9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <p>Utica, New York, USA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Blue Vista Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
