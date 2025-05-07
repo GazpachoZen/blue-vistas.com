@@ -7,6 +7,7 @@
 	RewriteRule ^(.+)\.(gif|bmp|jpg|jpeg|png|tiff|svg|webp)$ $1.webp [T=image/webp,E=WEBP_REDIRECT:1,L]
 </IfModule>
 # END Newfold WebP Existing Image Redirect
+
 # BEGIN Newfold Skip 404 Handling for Static Files
 <IfModule mod_rewrite.c>
 	RewriteEngine On
@@ -17,6 +18,7 @@
 	RewriteRule .* - [L]
 </IfModule>
 # END Newfold Skip 404 Handling for Static Files
+
 # BEGIN Newfold Browser Cache
 <IfModule mod_expires.c>
 	ExpiresActive On
@@ -32,10 +34,10 @@
 	ExpiresByType image/x-icon "access plus 1 year"
 </IfModule>
 # END Newfold Browser Cache
-# BEGIN WordPress
-# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
-# dynamically generated, and should only be modified via WordPress filters.
-# Any changes to the directives between these markers will be overwritten.
+
+# BEGIN WordPress (Modified for static site with 404 handling)
+# The original WordPress rules have been modified to serve static HTML files
+# and use a custom 404 error page
 <IfModule mod_expires.c>
 	ExpiresActive On
 	ExpiresByType image/jpg "access plus 1 year"
@@ -54,13 +56,26 @@ Options -Indexes
 	Header set X-Endurance-Cache-Level "2"
 	Header set X-nginx-cache "WordPress"
 </IfModule>
+
+# Custom 404 error handling
+ErrorDocument 404 /404.html
+
 <IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+	RewriteEngine On
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+	RewriteBase /
+	
+	# Allow direct access to existing files and directories
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule ^ - [L]
+	
+	# Handle specific file extensions directly (keep from your original rules)
+	RewriteCond %{REQUEST_URI} \.(css|htc|less|js|js2|js3|js4|html|htm|rtf|rtx|txt|xsd|xsl|xml|asf|asx|wax|wmv|wmx|avi|avif|avifs|bmp|class|divx|doc|docx|eot|exe|gif|gz|gzip|ico|jpg|jpeg|jpe|webp|json|mdb|mid|midi|mov|qt|mp3|m4a|mp4|m4v|mpeg|mpg|mpe|webm|mpp|otf|_otf|odb|odc|odf|odg|odp|ods|odt|ogg|ogv|pdf|png|pot|pps|ppt|pptx|ra|ram|svg|svgz|swf|tar|tif|tiff|ttf|ttc|_ttf|wav|wma|wri|woff|woff2|xla|xls|xlsx|xlt|xlw|zip)$ [NC]
+	RewriteRule ^ - [L]
+	
+	# For all other requests that don't match existing files or directories,
+	# redirect to the 404 page
+	RewriteRule ^ /404.html [L,R=404]
 </IfModule>
 # END WordPress

@@ -400,6 +400,10 @@ footer {
     text-align: center;
 }
 
+footer .copyright p {
+    color: var(--coral);
+}
+
 .copyright {
     color: var(--text-light);
     font-size: 14px;
