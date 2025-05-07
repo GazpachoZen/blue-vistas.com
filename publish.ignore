@@ -1,0 +1,15 @@
+# Ignore all .tmp and backup files
+*.tmp
+*~
+
+# Ignore entire directory
+__pycache__/
+__pycache__/*
+.git/
+.git/*
+
+# Ignore anything to do with the publish script
+publish.*
+
+# Don't publish GIMP files
+*.xcf
