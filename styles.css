@@ -50,21 +50,31 @@ header {
     align-items: center;
 }
 
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 .logo h1 {
     font-size: 28px;
     color: var(--primary-blue);
-    margin-left: 10px;
+    margin: 0;
     font-weight: 600;
 }
 
 .logo-img {
     width: 40px;
     height: 40px;
+    margin-right: 10px;
+}
+
+.logo a:hover h1 {
+    color: #085a80;
 }
 
 nav {
     margin-left: auto;
-    margin-right: 20px;
 }
 
 nav ul {
@@ -230,26 +240,27 @@ nav ul li a.active {
 
 .feature {
     display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
 .feature-icon {
     background-color: var(--sky-blue);
-    width: 40px;
-    height: 40px;
+    min-width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 15px;
     color: var(--primary-blue);
-    font-size: 20px;
+    font-weight: bold;
 }
 
 .feature-text {
     font-size: 16px;
-    font-weight: 500;
+    line-height: 1.5;
+    color: var(--text-light);
 }
 
 /* Danoggin Section */
@@ -283,31 +294,67 @@ nav ul li a.active {
 
 .features-list {
     width: 100%;
+    margin-top: 30px;
 }
 
-.feature {
+/* Danoggin Page Specific Styles */
+.danoggin-hero {
+    background-color: var(--primary-blue);
+}
+
+.danoggin-hero h2, 
+.danoggin-hero p {
+    color: var(--white);
+}
+
+.danoggin-intro {
+    padding: 80px 0;
+}
+
+.how-it-works {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.steps-container {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 50px;
 }
 
-.feature-icon {
-    background-color: var(--sky-blue);
-    min-width: 30px;
-    height: 30px;
+.step {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: calc(50% - 15px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.step-number {
+    background-color: var(--primary-blue);
+    color: white;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
-    color: var(--primary-blue);
     font-weight: bold;
+    margin-bottom: 15px;
 }
 
-.feature-text {
-    font-size: 16px;
-    line-height: 1.5;
+.step h4 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.step p {
     color: var(--text-light);
+    line-height: 1.5;
 }
 
 /* CTA Section */
@@ -434,5 +481,40 @@ footer {
     
     .about-text p {
         font-size: 16px;
+    }
+
+    .step {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h2 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .section-title h3 {
+        font-size: 28px;
+    }
+    
+    .about-text h4 {
+        font-size: 20px;
+    }
+    
+    .about-text p {
+        font-size: 16px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 8px 0;
     }
 }
