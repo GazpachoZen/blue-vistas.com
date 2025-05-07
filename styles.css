@@ -409,6 +409,22 @@ footer .copyright p {
     font-size: 14px;
 }
 
+.legal-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.legal-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.legal-links a:hover {
+    color: var(--primary-blue);
+}
+
 /* Responsive Design */
 @media (max-width: 992px) {
     .about-content {
