@@ -22,6 +22,11 @@ const headerHTML = `
                 <h1>Blue Vista Solutions</h1>
             </a>
         </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <ul>
                 <li><a href="danoggin.html" ${isCurrentPage('danoggin.html') ? 'class="active"' : ''}>Danoggin</a></li>
@@ -62,6 +67,7 @@ function insertFooter() {
 document.addEventListener('DOMContentLoaded', function() {
     insertHeader();
     insertFooter();
+    setupMobileMenu();
 });
 
 // If for some reason the DOM content loaded event has already fired,
@@ -70,5 +76,18 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
     setTimeout(function() {
         insertHeader();
         insertFooter();
-    }, 100); // Small delay to ensure DOM is accessible
+        setupMobileMenu();
+}, 100); // Small delay to ensure DOM is accessible
 }
+
+function setupMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+    }
+}
+

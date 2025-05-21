@@ -538,3 +538,70 @@ footer .copyright p {
         margin: 8px 0;
     }
 }
+
+/* Add these new styles to your styles.css file */
+
+/* Hamburger menu icon */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    margin-left: auto;
+    align-self: center; /* Add this to vertically center with the logo */
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-blue);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile navigation changes */
+@media (max-width: 768px) {
+    /* Show hamburger, hide regular nav by default */
+    .menu-toggle {
+        display: flex;
+    }
+    
+    nav {
+        width: 100%;
+        margin: 0;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+    }
+    
+    /* When nav is open, show it */
+    nav.active {
+        height: auto;
+        margin-top: 15px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    /* Fix for header not being too tall or fixed incorrectly */
+    header {
+        position: absolute;
+        padding: 10px 0;
+    }
+}
