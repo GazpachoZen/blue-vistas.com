@@ -22,12 +22,12 @@ const headerHTML = `
                 <h1>Blue Vista Solutions</h1>
             </a>
         </div>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-        <nav>
+        <nav id="navigation">
             <ul>
                 <li><a href="danoggin.html" ${isCurrentPage('danoggin.html') ? 'class="active"' : ''}>Danoggin</a></li>
                 <li><a href="about.html" ${isCurrentPage('about.html') ? 'class="active"' : ''}>About Us</a></li>
@@ -81,10 +81,10 @@ if (document.readyState === 'complete' || document.readyState === 'interactive')
 }
 
 function setupMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.getElementById('navigation');
     
-    if (menuToggle) {
+    if (menuToggle && nav) {
         menuToggle.addEventListener('click', function() {
             nav.classList.toggle('active');
         });

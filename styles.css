@@ -549,8 +549,9 @@ footer .copyright p {
     width: 30px;
     height: 21px;
     cursor: pointer;
-    margin-left: auto;
-    align-self: center; /* Add this to vertically center with the logo */
+    position: absolute;
+    right: 20px;
+    top: 25px; /* Adjust this value to align with the logo */
 }
 
 .menu-toggle span {
@@ -569,18 +570,24 @@ footer .copyright p {
         display: flex;
     }
     
+    .header-content {
+        position: relative; /* For absolute positioning of hamburger */
+        padding: 15px 0;
+    }
+    
+    .logo {
+        width: 80%; /* Give logo enough room */
+    }
+    
     nav {
+        display: none; /* Hide nav by default */
         width: 100%;
-        margin: 0;
-        height: 0;
-        overflow: hidden;
-        transition: height 0.3s ease;
+        margin-top: 15px;
     }
     
     /* When nav is open, show it */
     nav.active {
-        height: auto;
-        margin-top: 15px;
+        display: block;
     }
     
     nav ul {
@@ -595,13 +602,11 @@ footer .copyright p {
         text-align: center;
     }
     
-    .header-content {
-        flex-wrap: wrap;
-    }
-    
     /* Fix for header not being too tall or fixed incorrectly */
     header {
         position: absolute;
+        width: 100%;
         padding: 10px 0;
     }
 }
+
