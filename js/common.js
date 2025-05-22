@@ -1,18 +1,4 @@
-// Function to determine if a page is active
-function isCurrentPage(href) {
-    // Get the current page URL
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // If href is # or index.html, it's the homepage
-    if ((href === '#' || href === 'index.html') && (currentPage === '' || currentPage === 'index.html')) {
-        return true;
-    }
-    
-    // Otherwise check if href matches current page
-    return href === currentPage;
-}
-
-// Header HTML content
+// Simplified Header HTML content - no conditional logic
 const headerHTML = `
 <div class="container">
     <div class="header-content">
@@ -29,9 +15,9 @@ const headerHTML = `
         </div>
         <nav id="navigation">
             <ul>
-                <li><a href="danoggin.html" ${isCurrentPage('danoggin.html') ? 'class="active"' : ''}>Danoggin</a></li>
-                <li><a href="about.html" ${isCurrentPage('about.html') ? 'class="active"' : ''}>About Us</a></li>
-                <li><a href="contact.html" ${isCurrentPage('contact.html') ? 'class="active"' : ''}>Contact</a></li>
+                <li><a href="danoggin.html">Danoggin</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </div>
@@ -63,6 +49,34 @@ function insertFooter() {
     }
 }
 
+// Simple hamburger menu toggle functionality
+function setupMobileMenu() {
+    const menuToggle = document.getElementById('mobile-menu');
+    const nav = document.getElementById('navigation');
+    
+    if (menuToggle && nav) {
+        // Toggle menu on hamburger click
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuToggle.contains(e.target) && !nav.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+        
+        // Close menu when clicking on a menu item
+        nav.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                nav.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Insert header and footer once DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     insertHeader();
@@ -70,24 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileMenu();
 });
 
-// If for some reason the DOM content loaded event has already fired,
-// try to insert the header and footer immediately
+// Fallback for cases where DOMContentLoaded has already fired
 if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(function() {
         insertHeader();
         insertFooter();
         setupMobileMenu();
-}, 100); // Small delay to ensure DOM is accessible
+    }, 100);
 }
-
-function setupMobileMenu() {
-    const menuToggle = document.getElementById('mobile-menu');
-    const nav = document.getElementById('navigation');
-    
-    if (menuToggle && nav) {
-        menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
-        });
-    }
-}
-
